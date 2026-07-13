@@ -1,0 +1,7 @@
+{
+  "name": "GarrDash",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

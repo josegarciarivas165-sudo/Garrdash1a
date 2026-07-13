@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  /* Neon arcade palette: deep space navy, neon cyan, electric gold, hot magenta accent */
+  --background: 222 47% 9%;     /* deep space navy */
+  --foreground: 220 20% 97%;
+  --card: 223 40% 13%;
+  --card-foreground: 220 20% 97%;
+  --popover: 224 40% 11%;
+  --popover-foreground: 220 20% 97%;
+  --primary: 190 90% 50%;       /* neon cyan */
+  --primary-foreground: 222 47% 9%;
+  --secondary: 225 30% 22%;
+  --secondary-foreground: 220 20% 97%;
+  --muted: 223 30% 18%;
+  --muted-foreground: 218 18% 65%;
+  --accent: 45 100% 55%;        /* electric gold */
+  --accent-foreground: 222 47% 9%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 220 20% 97%;
+  --border: 220 30% 30%;
+  --input: 222 30% 18%;
+  --ring: 190 90% 50%;
+  --gold: 45 100% 55%;
+  --diamond: 190 80% 60%;
+  --neon-pink: 330 90% 60%;
+  --chart-1: 190 90% 50%;
+  --chart-2: 45 100% 55%;
+  --chart-3: 330 90% 60%;
+  --chart-4: 150 70% 50%;
+  --chart-5: 25 90% 55%;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-glow-primary {
+    text-shadow: 0 0 8px color-mix(in srgb, var(--primary) 70%, transparent),
+      0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
+  }
+  .text-glow-gold {
+    text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 70%, transparent),
+      0 0 22px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .text-glow-pink {
+    text-shadow: 0 0 8px color-mix(in srgb, var(--neon-pink) 70%, transparent),
+      0 0 22px color-mix(in srgb, var(--neon-pink) 45%, transparent);
+  }
+  .shadow-glow-primary {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 40%, transparent),
+      0 0 18px color-mix(in srgb, var(--primary) 35%, transparent);
+  }
+  .shadow-glow-gold {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 50%, transparent),
+      0 0 18px color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+  .bg-grid {
+    background-image: linear-gradient(
+        color-mix(in srgb, var(--primary) 8%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--primary) 8%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 40px 40px;
+  }
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 1.8s ease-in-out infinite;
+}
+
+@keyframes coin-float {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.1);
+  }
+  100% {
+    transform: translateY(-60px) scale(1);
+    opacity: 0;
+  }
+}
+
+.animate-coin-float {
+  animation: coin-float 1s ease-out forwards;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes drift {
+  from { background-position: 0 0; }
+  to { background-position: -2000px 0; }
+}
+.animate-grid-drift {
+  animation: drift 6s linear infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes float-particle {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(10px); }
+}
+
+@keyframes slide-shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
